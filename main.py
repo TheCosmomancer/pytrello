@@ -1,4 +1,5 @@
 import curses
+import datetime
 from classes import User, Admin, Project, UserAndProjects, Task, UserAndTasks, Funcs, db
 import validator_collection
 def main(stdscr):
@@ -6,6 +7,7 @@ def main(stdscr):
     db.create_tables([User, Project, UserAndProjects, Task, UserAndTasks])
     admin = Admin()
     user = None
+    now = datetime.datetime.today()
     while True:
         inp = Funcs.getinp(stdscr,'[L] log in / [S] sign up',1)
         if inp == 'L' or inp == 'l' or inp == 'S' or inp == 's':
@@ -20,8 +22,8 @@ def main(stdscr):
             department = Funcs.getinp(stdscr,'Department :')
             try:
                 assert validator_collection.is_email(email)
-                user = User(username = username,password = password,first_name = first_name,last_name = last_name,email = email,department = department)
-                user.save()
+                assert username.lower() != 'admin'
+                user = User.create(username = username,password = password,first_name = first_name,last_name = last_name,email = email,department = department)
                 break
             except:
                 pass

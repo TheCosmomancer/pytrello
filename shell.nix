@@ -19,7 +19,6 @@ pkgs.mkShellNoCC {
   packages = with pkgs; [
 
 
-    python312Full
     python312Packages.peewee
     python312Packages.validator-collection
 
