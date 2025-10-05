@@ -1,6 +1,6 @@
 # Project Management System
 
-A terminal-based project and task management system built with Python and curses.
+A terminal-based project and task management system built with Python and curses for Advanced programming class project.
 
 ## Features
 
